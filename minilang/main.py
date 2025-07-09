@@ -1,6 +1,6 @@
 from lark import Lark
-from ast_builder import ASTBuilder
-from interpreter import Interpreter
+from minilang.ast_builder import ASTBuilder
+from minilang.interpreter import Interpreter
 
 # Load grammar
 with open("grammar.lark") as f:

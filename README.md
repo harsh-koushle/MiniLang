@@ -1,4 +1,4 @@
-# 🧠 MiniLang — A Statically Typed Programming Language
+# MiniLang — A Statically Typed Programming Language
 
 **MiniLang** is a statically typed programming language implemented in Python using [Lark](https://github.com/lark-parser/lark). It features:
 
