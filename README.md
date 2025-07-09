@@ -14,45 +14,105 @@
 
 ```
 mini-lang/
-├── ast_builder.py       # AST transformer for parse trees
-├── interpreter.py       # Interpreter with static type enforcement
-├── grammar.lark         # Grammar specification in Lark format
-├── main.py              # Entry point: parser & interpreter invocation
-├── test_input.txt       # Sample MiniLang program
-└── README.md            # Project documentation
+├── minilang/               # Core interpreter logic
+│   ├── __init__.py
+│   ├── ast_builder.py      # AST transformer for parse trees
+│   ├── interpreter.py      # Interpreter with static type enforcement
+│   ├── grammar.lark        # Grammar specification in Lark format
+│   └── main.py             # Entry point
+│
+├── tests/                  # Sample programs for testing
+│   └── test_input.txt
+│
+├── requirements.txt        # Project dependencies
+├── .gitignore              # Git exclusions
+└── README.md               # Documentation
 ```
+
+---
 
 ## ⚙️ Getting Started
 
-1. **Install dependencies**
+1. **Clone the repository**:
 
    ```bash
-   pip install lark
+   git clone https://github.com/<your-username>/MiniLang.git
+   cd MiniLang
    ```
-2. **Run the interpreter**
+
+2. **Install dependencies**:
 
    ```bash
-   python main.py
+   pip install -r requirements.txt
    ```
 
-By default, it reads `test_input.txt`.
+3. **Run the interpreter**:
+
+   ```bash
+   python minilang/main.py
+   ```
+
+   By default, it reads from `tests/test_input.txt`.
 
 ---
 
 ## 📝 Language Features
 
 * **Types**: `int`, `bool`, `char`
-* **Typed Declarations**: `int x = 5;`, `bool flag = true;`, `char c = 'A';`
-* **Print Statement**: `print x;`
-* **Conditionals**: `if x > 0 { ... } else { ... }`
-* **Loops**: `while x < 10 { ... }`
+
+* **Typed Declarations**:
+
+  ```c
+  int x = 5;
+  bool flag = true;
+  char c = 'A';
+  ```
+
+* **Print Statement**:
+
+  ```c
+  print x;
+  ```
+
+* **Conditionals**:
+
+  ```c
+  if x > 0 {
+      print x;
+  } else {
+      print 0;
+  }
+  ```
+
+* **Loops**:
+
+  ```c
+  while x < 10 {
+      print x;
+      x = x + 1;
+  }
+  ```
+
 * **Functions**:
 
   ```c
   def int square(int y) {
-    return y * y;
+      return y * y;
   }
+
   print square(4); // → 16
   ```
 
 ---
+
+## 📦 Requirements
+
+```
+lark==1.1.7
+```
+
+> Install all dependencies with:
+>
+> ```bash
+> pip install -r requirements.txt
+> ```
