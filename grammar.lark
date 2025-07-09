@@ -1,0 +1,50 @@
+start: stmt+
+
+stmt: type NAME "=" expr ";"              -> typed_assign_stmt
+    | "def" type NAME "(" typed_param ")" block -> func_def
+    | "return" expr ";"                        -> return_stmt
+    | NAME "(" expr ")" ";"                    -> func_call_stmt
+    | "print" expr ";"                          -> print_stmt
+    | "if" expr block ("else" block)?            -> if_stmt
+    | "while" expr block                         -> while_stmt
+
+typed_param: type NAME
+
+type: "int"   -> type_int
+    | "bool"  -> type_bool
+    | "char"  -> type_char
+
+block: "{" stmt+ "}"
+
+expr: expr "==" expr   -> eq
+    | expr "!=" expr   -> ne
+    | expr "<" expr    -> lt
+    | expr "<=" expr   -> le
+    | expr ">" expr    -> gt
+    | expr ">=" expr   -> ge
+    | sum_expr
+
+sum_expr: sum_expr "+" term   -> add
+        | sum_expr "-" term   -> sub
+        | term
+
+term: term "*" factor         -> mul
+    | term "/" factor         -> div
+    | factor
+
+factor: NUMBER                -> number
+      | CHAR                  -> char
+      | NAME                  -> var
+      | "true"                -> true
+      | "false"               -> false
+      | NAME "(" expr ")"     -> func_call_expr
+      | "(" expr ")"
+
+NAME: /[a-zA-Z_]\w*/
+NUMBER: /\d+/
+CHAR: /'[^']'/
+
+%ignore /[ \t\n]+/
+%ignore /\/\/[^\n]*/
+%ignore /\/\*.*?\*\//s
+

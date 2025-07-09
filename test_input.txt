@@ -1,0 +1,7 @@
+int x = 10;
+
+def int add(int y) {
+  return x + y;
+}
+
+print add(5);  // Output: 15
