@@ -36,7 +36,7 @@ mini-lang/
 1. **Clone the repository**:
 
    ```bash
-   git clone https://github.com/<your-username>/MiniLang.git
+   git clone https://github.com/harsh-koushle/MiniLang.git
    cd MiniLang
    ```
 
@@ -49,7 +49,7 @@ mini-lang/
 3. **Run the interpreter**:
 
    ```bash
-   python minilang/main.py
+   python -m minilang.main
    ```
 
    By default, it reads from `tests/test_input.txt`.
